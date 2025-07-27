@@ -26,6 +26,16 @@ This file provides the structure of the webpage.
   - **`<button id="theme-toggle" ...>`**: This is the button that allows the user to toggle between the light and dark themes. It has an `id` of `theme-toggle` so that it can be targeted by the JavaScript code.
 - **`<script src="index.js"></script>`**: This includes and runs the JavaScript code from the `index.js` file.
 
+### `input.css`
+
+This file defines the color palette for both the light and dark themes using CSS custom properties (variables). It also configures Tailwind CSS to recognize these themes.
+
+- **`@import "tailwindcss";`**: This line imports the base styles, components, and utilities from Tailwind CSS.
+- **`@theme { ... }`**: This is a special block in Tailwind CSS v4 where you can define your design tokens. These tokens are then used to generate utility classes. For example, `--color-primary-blue` becomes `bg-primary-blue`, `text-primary-blue`, etc.
+- **`@custom-variant dark (&:where(.dark, .dark *));`**: This line tells Tailwind to generate a `dark` variant for all utility classes. These dark mode styles will be applied whenever the `.dark` class is present on an element or any of its ancestors.
+- **`:root { ... }`**: This block defines the CSS custom properties for the light theme. These are the default colors for the webpage.
+- **`.dark { ... }`**: This block defines the CSS custom properties for the dark theme. When the `.dark` class is applied to the `<html>` element, these colors will override the default light theme colors.
+
 ### `index.js`
 
 This file contains the JavaScript code that handles the theme switching.
